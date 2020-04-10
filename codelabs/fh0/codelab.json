@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-11-27T08:57:19Z",
+  "id": "fh0",
+  "duration": 0,
+  "title": "1.Introduction to Freshworks Developer Platform",
+  "authors": "Hemchander S",
+  "summary": "This tutorial introduces you to the Freshworks developer platform, it's features and capabilities",
+  "source": "1cgOqCw13vT_JXdZpccVhTMJTKoLORd7ZTmNSjbX0fMA",
+  "theme": "web",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Web"
+  ],
+  "tags": [
+    "freshdesk"
+  ],
+  "url": "fh0"
+}
