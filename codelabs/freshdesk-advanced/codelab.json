@@ -3,10 +3,10 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2019-11-19T09:27:47Z",
-  "id": "fh2",
+  "updated": "2020-05-14T06:19:17Z",
+  "id": "freshdesk-advanced",
   "duration": 0,
-  "title": "3. Simple GitHub integration using OAuth, Data Storage, Notifications",
+  "title": "3.Simple GitHub integration using OAuth, Data Storage, Notifications",
   "authors": "Hemchander S",
   "summary": "In this tutorial, we will learn to use some of the frequently used platform-features such as Request API, Data Storage, Notifications, OAuth, Installation Parameters, and UI Modals/Dialogs.",
   "source": "1zmeDhYAWRIjScyL792N_fU1x_Ar3vNrN275BEKzqYaA",
@@ -21,5 +21,5 @@
     "freshdesk"
   ],
   "feedback": "https://github.com/hemchander23/fh3/",
-  "url": "fh2"
+  "url": "freshdesk-advanced"
 }
