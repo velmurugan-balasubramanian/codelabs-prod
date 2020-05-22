@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-05-14T13:59:03Z",
+  "updated": "2020-05-18T09:55:00Z",
   "id": "freshdesk-basics",
   "duration": 0,
   "title": "2.Build your first Freshworks app",
@@ -20,5 +20,6 @@
   "tags": [
     "freshdesk"
   ],
+  "ga": "UA-159161314-2",
   "url": "freshdesk-basics"
 }

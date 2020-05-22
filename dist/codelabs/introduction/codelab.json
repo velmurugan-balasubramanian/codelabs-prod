@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-05-18T09:54:48Z",
+  "id": "introduction",
+  "duration": 0,
+  "title": "1.Introduction to Freshworks Developer Platform",
+  "authors": "Hemchander S",
+  "summary": "The Freshworks Developer Platform primarily enables developers to build apps that can run within the context of a Freshworks product, and thus tailor the product experience for users from both the front-end and the back-end.",
+  "source": "1kVNbCYhMC4OU2L0MoW_tM-S9ddrOv9gqJmcjCWnj6VY",
+  "theme": "web",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Web"
+  ],
+  "tags": [
+    "freshdesk"
+  ],
+  "ga": "UA-159161314-2",
+  "url": "introduction"
+}

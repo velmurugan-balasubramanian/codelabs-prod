@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-05-18T09:55:28Z",
+  "id": "freshdesk-serverless",
+  "duration": 0,
+  "title": "4.Freshdesk Serverless App",
+  "authors": "Hemchander S",
+  "summary": "This tutorial introduces you to advanced serverless features to create backend apps for freshworks products.",
+  "source": "1jqyv6SeAIykdKK-LOfdXSDTkxZeyU4hKySEIpH-yq_c",
+  "theme": "web",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Web"
+  ],
+  "tags": [
+    "freshdesk"
+  ],
+  "feedback": "https://github.com/hemchander23/weatherbuddy",
+  "ga": "UA-159161314-2",
+  "url": "freshdesk-serverless"
+}

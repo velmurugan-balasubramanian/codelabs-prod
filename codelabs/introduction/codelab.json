@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-05-14T06:19:30Z",
+  "updated": "2020-05-18T09:54:48Z",
   "id": "introduction",
   "duration": 0,
   "title": "1.Introduction to Freshworks Developer Platform",
@@ -20,5 +20,6 @@
   "tags": [
     "freshdesk"
   ],
+  "ga": "UA-159161314-2",
   "url": "introduction"
 }

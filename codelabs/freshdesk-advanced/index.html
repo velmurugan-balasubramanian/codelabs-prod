@@ -21,42 +21,48 @@
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab codelab-gaid=""
+  <google-codelab codelab-gaid="UA-159161314-2"
                   id="freshdesk-advanced"
                   title="3.Simple GitHub integration using OAuth, Data Storage, Notifications"
                   environment="web"
-                  feedback-link="https://github.com/hemchander23/fh3/">
+                  feedback-link="https://community.developers.freshworks.com">
     
       <google-codelab-step label="Introduction" duration="0">
-        <p>In this tutorial, we will create a simple app that integrates with GitHub and lets us create issues for Freshdesk tickets. Along the way, we will look into the frequently used platform-features such as Request API, Data Storage, Notifications, OAuth, Installation Parameters, UI Modals/Dialogs, and so on. The features will come in handy when you create apps for our products.</p>
-<h3 is-upgraded><strong>⭐️</strong><strong><em>What will we learn?</em></strong></h3>
+        <p>In this tutorial, we will create a simple app that integrates with GitHub and lets us create Github issues for Freshdesk tickets. Along the way, we will look into the frequently used platform-features such as Data Storage, Request methods, Notifications, OAuth, Installation Parameters, UI Modals/Dialogs, and so on. These features will come in handy when you create apps for the products.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/ea954e11029170d6.png"></p>
+<h3 is-upgraded><strong>⭐️</strong><strong><em>What will we be learning?</em></strong></h3>
 <p>How to,</p>
 <ol type="1" start="1">
-<li>Make API calls from our app and secure the calls by using OAuth</li>
-<li>Create a GitHub issue from Freshdesk</li>
+<li>Make API calls from our app and secure them using OAuth</li>
+<li>Create a GitHub issue from Freshdesk using REST APIs</li>
 <li>Avoid duplication using Data Storage</li>
-<li>Display the issue, on our app by using Modals and Data storage APIs</li>
+<li>Display the issue on our app using Modals and Data storage methods</li>
 </ol>
-<p>Before we dive-in, ensure to, <br></p>
+<p>🏊‍♂️Before we dive-in, ensure to, <br></p>
 <ol type="1" start="1">
 <li>Clone the marketplace sample apps repo and open the boilerplate code.</li>
 </ol>
 <pre><code>git clone https://github.com/freshdesk/marketplace-sample-apps</code></pre>
-<pre><code>cd Play-Along/Exercises/fundamentals/level2</code></pre>
+<pre><code>cd marketplace-sample-apps/Play-Along/Exercises/fundamentals/level2/start</code></pre>
 <ol type="1" start="2">
-<li>Set up a trial Freshdesk account</li>
-<li>Set up a GitHub account<br></li>
+<li>Set up a <a href="https://freshdesk.com/signup" target="_blank">trial Freshdesk account</a></li>
+<li>Set up a GitHub account</li>
 </ol>
-<aside class="special"><p><strong>Tip:</strong> We have a sample app repository at <a href="https://github.com/freshdesk/marketplace-sample-apps" target="_blank">https://github.com/freshdesk/marketplace-sample-apps</a> where there are tons of samples. We have a platform cheat-sheet at <a href="https://developers.freshdesk.com/v2/docs/code-review-guidelines/" target="_blank">https://developers.freshdesk.com/v2/docs/code-review-guidelines/</a> and a UI style guide at <a href="https://developers.freshdesk.com/v2/docs/ui-style-guide/" target="_blank">https://developers.freshdesk.com/v2/docs/ui-style-guide/</a>. All of these will help you create apps faster.</p>
+<p>Before proceeding to the next step,</p>
+<ol type="1" start="1">
+<li>Obtain the <code>client_id</code> and <code>client_secret</code> of a sample Github app based on instructions in <strong>Codelab Step 5 (Configuring our app with Github OAuth)</strong></li>
+<li>Fill the obtained details in the <code>oauth_config.json</code> file<br></li>
+</ol>
+<aside class="special"><p><strong>Tip:</strong> We have a sample app repository at <a href="https://github.com/freshdesk/marketplace-sample-apps" target="_blank">https://github.com/freshdesk/marketplace-sample-apps</a> where there are tons of samples. We have a platform cheat-sheet at <a href="https://developers.freshdesk.com/v2/docs/code-review-guidelines/" target="_blank">https://developers.freshdesk.com/v2/docs/code-review-guidelines/</a> and a UI style guide at <a href="https://developers.freshdesk.com/v2/docs/ui-style-guide/" target="_blank">https://developers.freshdesk.com/v2/docs/ui-style-guide/</a>. All of these will help you create apps faster.<br><br>You can also make use of Crayons UI kit - <a href="https://crayons.freshworks.com/" target="_blank">https://crayons.freshworks.com</a> to take care of app styling</p>
 </aside>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="App UI" duration="0">
-        <p>If you navigate to <strong>app/template.html</strong>, you&#39;ll notice that we have a simple UI built using Bootstrap v3.3 and containing the product (Freshdesk) stylesheet. The UI looks as follows:</p>
+        <p>If you navigate to <strong>app/template.html</strong>, you&#39;ll notice that we have a simple UI built using Bootstrap v3.3 and the product (Freshdesk) stylesheet. The UI looks like the image below:</p>
 <p class="image-container"><img style="width: 303.22px" src="img/2f9d22d0232871e.png"><br></p>
-<p>The <strong>Create Issue</strong> button enables us to create an issue and the <strong>View issue details</strong> button helps us to view the created issue. This is a simple sidebar app (there are other <a href="https://developers.freshdesk.com/v2/docs/app-locations/" target="_blank">placeholders</a> (Full page, background, CTI) in Freshdesk .</p>
+<p>The <strong>Create Issue</strong> button enables us to create an issue and the <strong>View issue details</strong> button helps us to view the created issue. This is a simple sidebar app. However, there are other <a href="https://developers.freshdesk.com/v2/docs/app-locations/" target="_blank">placeholders</a> that you can explore in the documentation(Full page app, Background app, Caller Telephony Integration - CTI app,etc.) for respective products.</p>
 <h3 is-upgraded><br><a href="https://github.com/hemchander23/fh3/blob/master/app/template.html" target="_blank"><strong>app/template.html</strong></a></h3>
 <pre><code>&lt;html&gt;
 
@@ -89,8 +95,8 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="How to make an API call from our app" duration="0">
-        <p>REST APIs enable communication between the app and GitHub. This is the case for any third-party communication from the app as well. The GitHub API <a href="https://developer.github.com/v3/" target="_blank">documentation</a> clearly specifies where (endpoint) and how to make the API call (headers, payload, and so on). Our app should  adhere to the specification and provide payloads in the specified format.<br><br>To create an issue in GitHub, we must make an API call to the <code>POST /repos/:owner/:repo/issues </code><a href="https://developer.github.com/v3/issues/#create-an-issue" target="_blank">endpoint</a> with the following payload attributes:<br></p>
+      <google-codelab-step label="How to make an API call from our app?" duration="0">
+        <p>REST APIs enable communication between the app and GitHub. This is the case for any third-party communication from the app. The GitHub API <a href="https://developer.github.com/v3/" target="_blank">documentation</a> clearly specifies how (endpoint, headers, payload, and so on) to make the API calls. Our app should  adhere to the specification and provide payloads in the specified format.<br><br>To create an issue in GitHub, we must make an API call to the <code>POST /repos/:owner/:repo/issues </code><a href="https://developer.github.com/v3/issues/#create-an-issue" target="_blank">endpoint</a> with the following payload attributes:<br></p>
 <table>
 <tr><td colspan="1" rowspan="1"><p><strong>Attribute Name</strong></p>
 </td><td colspan="1" rowspan="1"><p><strong>Type</strong></p>
@@ -121,7 +127,7 @@
 <p><em>Note: Only users with push access can set assignees for new issues. Otherwise, assignees are silently dropped.</em></p>
 </td></tr>
 </table>
-<p>Usually, in front-end apps, making API calls is a challenge especially when it is to be secured. To secure API calls and to solve other issues such as CORS, templating for keys/tokens, we make use of the Request API and iparams.<br>The following snippet shows the <a href="https://developers.freshdesk.com/v2/docs/installation-parameters/" target="_blank">iparam</a> definition in the <strong>config/iparams.json </strong>file:</p>
+<p>Usually, in front-end apps, making secure API calls is a challenge. To secure API calls and to solve other issues such as CORS, we make use of the Request methods with secure iparams.<br><br>The following snippet shows the <a href="https://developers.freshdesk.com/v2/docs/installation-parameters/" target="_blank">iparam</a> definition in the <strong>config/iparams.json </strong>file:</p>
 <pre><code>{
  &#34;github_repo&#34;: {
    &#34;display_name&#34;: &#34;Github Repo Name : &#34;,
@@ -131,7 +137,10 @@
    &#34;secure&#34;: true
  }
 }</code></pre>
-<p>The Request API call from our app looks as follows. Make a note of how we made use of the iparam templating to substitute the repo name.</p>
+<p><strong>Testing Installation Parameters:</strong></p>
+<p>You can provide test data for iparams by navigating to <a href="http://localhost:10001/custom_configs" target="_blank">http://localhost:10001/custom_configs</a>. In my case, I am filling-in the value of the Github repo. Upon success, you will see a notification at the top of the test iparams page - stating that the App Installation parameters have been successfully stored.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/e5c1b57322675632.gif"></p>
+<p>The Request method call from our app is as follows. Make a note of how we made use of iparam templating to substitute the repo name.</p>
 <h3 is-upgraded><a href="https://github.com/hemchander23/fh3/blob/master/app/app.js#L83-L92" target="_blank"><strong>app/app.js</strong></a></h3>
 <pre><code>client.request.post(`https://api.github.com/repos/&lt;%= iparam.github_repo %&gt;/issues`, options)
     .then(function (data) {
@@ -143,22 +152,33 @@
     .catch(function (error) {
       console.error(&#34;error&#34;, error);
     });</code></pre>
-<p>Until now, we have seen the structure of the Request API and how it can be used with iparam templating, to make a call. If we use basic authentication or keys, we can make similar use of iparams in setting the header values (in the <code>options</code> object of the Request API - which we will see shortly). In our case, we want to secure the API calls by using OAuth; let&#39;s see how it can be done with the Request API with a short primer on OAuth. </p>
+<p>Until now, we have seen the structure of the Request method and how it can be used with iparam templating to make a call. If we use basic authentication or keys, we can make similar use of iparams in setting the header values (in the <code>options</code> object of the Request methods - which we will see shortly). In our case, we want to secure the API calls using OAuth; let&#39;s see how it can be done with the Request method. Before that, let&#39;s cover the concept of OAuth in a breeze⚡️ </p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="How to secure API calls by using OAuth 🚩" duration="0">
-        <p>Open Authorization (OAuth) is an open standard for delegated authorization . OAuth is commonly used as a way for users to grant websites or applications access to  information on other websites, without giving away the passwords. </p>
-<p class="image-container"><img style="width: 624.00px" src="img/c29cf407f6e5cd7e.png"></p>
-<p>For more information on OAuth, refer our <a href="https://developers.freshdesk.com/v2/docs/oauth/#configure" target="_blank">documentation</a>.. </p>
+      <google-codelab-step label="What is OAuth and why it is secure 🚩" duration="0">
+        <p>Open Authorization (OAuth) is an open standard for <em>delegated authorization</em> . OAuth is commonly used as a way for users to grant websites or applications access to  information on other websites, without giving away the passwords. </p>
+<p class="image-container"><img style="width: 624.00px" src="img/99eadd36845e72f7.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/7fd94e7932dbdef4.png"></p>
+<p><em>&#34;You can think of this like hotel key cards, but for apps. If you have a hotel key card, you can get access to your room. How do you get a hotel key card? You have to do an authentication process at the front desk to get it. After authenticating and obtaining the key card, you can access resources across the hotel.&#34;  - Matt Raible</em></p>
+<p class="image-container"><img style="width: 450.00px" src="img/1af2cb65df24c9b4.png"></p>
+<p>For more information on OAuth, refer to our <a href="https://developers.freshdesk.com/v2/docs/oauth/#configure" target="_blank">documentation</a>.. </p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="How to configure our app with Github OAuth" duration="0">
+        <aside class="special"><p>If you have already configured the OAuth settings in your app, you can <strong>skip</strong> this step</p>
+</aside>
 <p>Let&#39;s proceed to create a GitHub app that would provide us the <code>client_id</code> and <code>client_secret</code> to enable OAuth in our app. When creating the app, ensure to provide the redirect URL for your app in the third-party developer portal (GitHub) with the following values:<br></p>
 <ul>
 <li><strong>Local Testing</strong>: <code>http://localhost:10001/auth/callback</code></li>
 <li><strong>Production</strong>: <code>https://oauth.freshdev.io/auth/callback</code></li>
 </ul>
 <p class="image-container"><img style="width: 624.00px" src="img/fc050477cad21412.gif"></p>
-<p>After the app is created, obtain the <code>client_id</code> and <code>client_secret</code> values (Refer image below) and add them to the <strong>oauth_config.json </strong>file along with the authorization and token URLs. For more information, refer the GitHub developer docs.<img style="width: 624.00px" src="img/69708a6f57f10541.png"></p>
+<p>After the app is created, obtain the <code>client_id</code> and <code>client_secret</code> values (Refer image below) and add them to the <strong>oauth_config.json </strong>file along with the authorization and token URLs. For more information, refer to the <a href="https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/" target="_blank">GitHub developer docs</a>.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/69708a6f57f10541.png"></p>
 <p><br>A sample <strong>oauth_config.json</strong> file is as follows: </p>
 <h3 is-upgraded><br><a href="https://github.com/hemchander23/fh3/blob/master/config/oauth_config.json" target="_blank"><strong>config/oauth_config.json</strong></a></h3>
 <pre><code>{
@@ -171,25 +191,22 @@
  },
  &#34;token_type&#34;: &#34;account&#34;
 }</code></pre>
-<p>After the preceding steps are run, it is time to modify the options parameter of the Request API call. </p>
+<p>After the preceding steps are run, it is time to modify the <code>options</code> parameter of the Request method call. </p>
 <p><strong><em>Note</em></strong><em>: </em><em><code>access_token</code></em><em> is not an iparam and is automatically substituted after authorization.</em></p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="How to Authorize the app" duration="0">
-        <p>After the necessary configurations, run the app by using the <code>fdk run</code> command. The following message requesting for authorization, is displayed.</p>
+<p>After the necessary configurations, run the app by using the <code>fdk run</code> command. The following message requesting for authorization is displayed.</p>
 <p class="image-container"><img style="width: 379.50px" src="img/a0ded754df78bf79.gif"></p>
 <p class="image-container"><img style="width: 624.00px" src="img/be5daabbc80ca258.gif"></p>
 <p>After the app is approved, you will be redirected to the Create Issue page. </p>
 <p class="image-container"><img style="width: 484.50px" src="img/2f9d22d0232871e.png"></p>
+<aside class="special"><p>Now that the app is authorized, the UI will be accessible. You can go back to <strong>Codelab step 2 (App UI)</strong> to understand how the app is put together </p>
+</aside>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Let&#39;s create a GitHub issue from our app" duration="0">
+      <google-codelab-step label="Let&#39;s create a GitHub issue from our app using OAuth-enabled Request methods" duration="0">
         <ul>
-<li>To get started with creating an issue, copy the following function and paste oncreateIssue() placeholder  in app/app.js file</li>
+<li>To get started with creating an issue, we are going to make use of the <code>createIssue()</code> function  in app/app.js file</li>
 </ul>
 <pre><code>/**
  *  Create a Github Issue
@@ -214,7 +231,7 @@ function createIssue() {
   });
 }</code></pre>
 <ul>
-<li>If you see on error callback in the function, there is a createIssueHelper() function, let&#39;s also paste that function right under the createIssue() function</li>
+<li>The logic for <code>createIssueHelper()</code> function is as below. Copy and paste the following code at the appropriate place (Ignore if the code is already present)</li>
 </ul>
 <pre><code>/**
  * Makes an API call to Github to create an issue from the ticket
@@ -247,17 +264,16 @@ function createIssueHelper(ticketData) {
 }
 </code></pre>
 <p>Now that we are able to authenticate with GitHub, we will see how we can create an issue in GitHub. </p>
-<p>The <a href="https://github.com/hemchander23/fh3/blob/master/app/app.js#L71" target="_blank"><code>createIssueHelper()</code></a><code> </code>method lets us create an issue in GitHub, based on the ticket data. The following is a  preview of how the results look. The warning displayed indicates that there is  another feature used in the app.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/7915369b96d6c894.gif"></p>
-<p>A corresponding GitHub issue is created in the repo that is specified in the <strong>iparams.json</strong> file.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/fcef94dfe53747fa.gif"></p>
+<p>The <a href="https://github.com/freshdesk/marketplace-sample-apps/blob/ac2dd4a07c0cf0066f3d2d0c0923c7e000d87c5c/Play-Along/Exercises/fundamentals/level2/app/app.js#L70" target="_blank"><code>createIssueHelper()</code></a><code> </code>method lets us create an issue in GitHub, based on the ticket data. The following is a  preview of how the results look. <img style="width: 624.00px" src="img/98607425f954517f.gif"></p>
+<p>A corresponding GitHub issue is created in the repo that is specified in the <strong>iparams test page</strong>.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/7285b07ccb93b541.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Avoid duplication using Data Storage" duration="0">
-        <p>As evident from the title, we might run into a situation where we may create multiple issues by pressing the <strong>Create Issue</strong> button. To avoid duplicates, we can make use of the <a href="https://developers.freshdesk.com/v2/docs/data-storage/" target="_blank">Data Storage feature</a> in our app.<br><br> A simple method is to maintain a record for a ticket, if an issue is successfully created. When the next issue is to be created, a check is run to verify if there&#39;s a record that already exists. If it exists, the issue is not created.</p>
-<p>Data storage allows us to achieve two things at the same time: avoid duplication and cache or fetch the previously persisted issue details in an instant. </p>
+        <p>As evident from the title, we might run into a situation where we may create multiple issues by pressing the <strong>Create Issue</strong> button (more than once). To avoid duplicates, we can make use of the <a href="https://developers.freshdesk.com/v2/docs/data-storage/" target="_blank">Data Storage feature</a> in our app.<br><br> A simple approach is to maintain a record for a ticket, if an issue is successfully created. When the next issue is to be created, a check is run to verify if there&#39;s a record that already exists. If it exists, a new issue will not be created (potential duplicate).</p>
+<p>Data storage allows us to achieve two things at the same time: avoids duplication and acts as a cache when fetching the issue details. </p>
 <h3 is-upgraded><br><a href="https://github.com/hemchander23/fh3/blob/master/app/app.js#L31" target="_blank">app/app.js</a></h3>
 <ul>
 <li>Paste the following code in app.js right before the showNotification(type, title, message) to implement data storage</li>
@@ -276,15 +292,15 @@ function setData(data) {
   });
 }</code></pre>
 <ul>
-<li>Remove the comment (//) in  &#34;// setData(ticketObj);&#34;  in createIssueHelper(ticketData) function to store mapping data </li>
+<li>Uncomment  &#34;setData(ticketObj);&#34;  in createIssueHelper(ticketData) function to store mapping data (Ignore if it&#39;s already there) </li>
 </ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="How to display the GitHub ticket details in Freshdesk" duration="0">
-        <p>You can use <a href="https://developers.freshdesk.com/v2/docs/interface-api/#ticketshowmodal" target="_blank"><strong>Interface APIs</strong></a> to trigger user interface actions on a page. With these APIs, an app can control the visibility of ticket properties, hide or disable buttons, and show dialog boxes and notifications.</p>
-<p>For our app, we will make use of Modals to show the ticket details. Copy the following function and paste in viewIssue() Function goes here place holder</p>
+      <google-codelab-step label="How to display the GitHub ticket details in Freshdesk?" duration="0">
+        <p>You can use the <a href="https://developers.freshdesk.com/v2/docs/interface-api/#ticketshowmodal" target="_blank"><strong>Interface methods</strong></a> to trigger user interface actions on a page. With these methods, an app can control the visibility of ticket properties, hide or disable buttons, and show dialog boxes and notifications.</p>
+<p>For our app, we will make use of Modals to show the ticket details. </p>
 <pre><code>/**
 *  Function to View issue in the modal, Passes ticket as an object to the modal, can be fetched in the modal using Instance API
 */
@@ -299,20 +315,20 @@ function viewIssue() {
     console.error(error);
   });
 }</code></pre>
-<p>The <strong>modal.html </strong>file contains the ticket details. <strong>Modal.js </strong>is the javascript file associated with it. <br></p>
+<p>The <strong>modal.html </strong>file contains the ticket details. <strong>modal.js </strong>is the javascript file associated with it. <br></p>
 <ol type="1" start="1">
-<li>From the modal.html file, obtain the issue number associated with a ticket. </li>
-<li>Use the Request API and make a GET call to GitHub.</li>
+<li>From the modal.html file, obtain the Github issue number associated with a ticket. </li>
+<li>Using the Request method, make a GET call to GitHub.</li>
 <li>To display the ticket details, set the HTML content as follows:<br><br></li>
 </ol>
 <pre><code>/**
-* Function to fecth issue from github, authorization is done using Oauth
+* Function to fetch issue from github, authorization is done using Oauth
 * @param {string} issueID  Issue number to query specific  ticket from github
 */
 function fetchIssue(issueID) {
  var options = {
    headers: {
-     Authorization: &#39;token &lt;%= access_token %&gt;&#39;,
+     &#39;Authorization&#39;: &#39;token &lt;%= access_token %&gt;&#39;,
      &#39;User-Agent&#39;: &#39;FreshHuddle Sample User Agent&#39;
    },
    isOAuth: true
@@ -336,8 +352,8 @@ function fetchIssue(issueID) {
      console.error(&#34;error&#34;, error);
    });
 }</code></pre>
-<p class="image-container"><img style="width: 624.00px" src="img/ae276552928acfb4.gif"></p>
-<p>If there&#39;s no issue associated with the ticket, the data storage APIs throw a 404 error status; we can display an appropriate message for the error.<br></p>
+<p class="image-container"><img style="width: 624.00px" src="img/89635951c3db30e3.gif"></p>
+<p>If there&#39;s no issue associated with the ticket, the data storage method throws a 404 error status; we can display an appropriate message for the error.<br></p>
 <pre><code>/**
 * Retrieve the issue from data storage
 * @param {Number} ticketID Ticket ID
@@ -369,15 +385,15 @@ function getIssue(ticketID,callback) {
       <google-codelab-step label="Here&#39;s what we learned 🎉" duration="0">
         <p>We learned to <br></p>
 <ul>
-<li>Create and configure an OAuth client into our app, </li>
-<li>Made secure API requests using Request APIs and the OAuth access token,</li>
+<li>Create and configure an OAuth client </li>
+<li>Made secure API requests using Request methods and OAuth,</li>
 <li>Remembered state information using data storage,</li>
-<li>Learned to display notification from the app and </li>
-<li>Handed off control from the main instance of an app to a modal launched by the app.</li>
+<li>Displayed notifications from the app and </li>
+<li>Passed-on context from the main instance of an app to a modal launched by the app.</li>
 </ul>
 <p><strong>What&#39;s next ?</strong></p>
 <p class="image-container"><img style="width: 559.50px" src="img/94c39541e0bdcc87.gif"></p>
-<p><em>(Serverless technique,before it got mainstream) - Wimpy, Popeye </em></p>
+<p><em>Serverless technique,before it got mainstream - Feat. Wimpy, Popeye </em></p>
 
 
       </google-codelab-step>

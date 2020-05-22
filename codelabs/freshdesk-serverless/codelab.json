@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-05-14T06:19:06Z",
+  "updated": "2020-05-18T09:55:28Z",
   "id": "freshdesk-serverless",
   "duration": 0,
   "title": "4.Freshdesk Serverless App",
@@ -21,5 +21,6 @@
     "freshdesk"
   ],
   "feedback": "https://github.com/hemchander23/weatherbuddy",
+  "ga": "UA-159161314-2",
   "url": "freshdesk-serverless"
 }
