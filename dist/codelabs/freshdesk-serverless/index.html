@@ -68,9 +68,13 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="How to create the serverless scaffold" duration="0">
-        <p>As a prerequisite, you should have completed codelab #3 and have a working version of that app. You can switch to <code>level3</code> directory from <code>level2</code> using the following command</p>
-<pre><code>cd ../level3</code></pre>
+      <google-codelab-step label="Get the sample code 🚩" duration="0">
+        <ol type="1" start="1">
+<li>Clone the sample apps repository <a href="https://github.com/freshdesk/marketplace-sample-apps" target="_blank">https://github.com/freshdesk/marketplace-sample-apps</a></li>
+<li>Navigate to the directory - Play-Along/Exercises/fundamentals/level3</li>
+</ol>
+<pre><code>cd Play-Along/Exercises/fundamentals/level3</code></pre>
+<p>The app source code in the directory is a skeleton on top of which the complete app will be built in the subsequent steps. Files referred to in this tutorial are relative to the <em>Play-Along/Exercises/fundamentals/level1</em> directory.</p>
 <p>Make sure you have the <code>iparam_test_data.json</code> and <code>oauth_config.json</code> setup based on the learnings from the previous tutorial. Based on where the app runs, the OAuth callback URL in the Github app needs to be updated.<br>In case of :<br><strong>Testing</strong> 👉  http://localhost:10001/auth/callback</p>
 <p><strong>Production</strong> 👉 https://oauth.freshdev.io/auth/callback</p>
 
@@ -78,9 +82,13 @@
       </google-codelab-step>
     
       <google-codelab-step label="Create issues 🚩" duration="0">
-        <p>Let us now extend the boilerplate <em>server.js</em> created in the previous section to create issues in GitHub.</p>
+        <p>Let us now extend the boilerplate <em>server.js</em> to create issues in GitHub.</p>
 <ol type="1" start="1">
-<li>In the <strong>server.js</strong> file (L37), copy and paste the code for <code>onTicketCreateHandler</code> method with the code from the following function snippet.</li>
+<li>Add the following object in the events array, this time to introduce  an onTicketCreate event handler.</li>
+</ol>
+<pre><code>{ event: &#34;onTicketCreate&#34;, callback: &#34;onTicketCreateHandler&#34; }</code></pre>
+<ol type="1" start="2">
+<li>Copy and paste the code for <code>onTicketCreateHandler</code> method with the code from the following function snippet under the place holder. </li>
 </ol>
 <pre><code> onTicketCreateHandler: function (args) {
    $request.post(`https://api.github.com/repos/${args.iparams.github_repo}/issues`, {
@@ -137,7 +145,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Register a webhook with GitHub 🚩" duration="0">
-        <aside class="warning"><p><strong>Note:</strong> Since Github does not allow registration of <code>localhost</code> URLs for Webhooks, we can proceed with packing our app as a custom app. Another alternative is to use <code>ngrok</code> to tunnel the requests from Github to our local app</p>
+        <aside class="warning"><p><strong>Note:</strong>  Stop and Start server using <strong>fdk run -t</strong> to start the server using ngrok web tunnel, it is advised to start the server in tunnel mode, as github doesn&#39;t localhost URL for webhook registration. </p>
 </aside>
 <ol type="1" start="1">
 <li>Add the following JSON objects, in the server.js file, in the events array, just before the <code>onTicketCreate</code> event mapping object. This will add two new event handlers (app event handlers)  to our serverless app.</li>
