@@ -106,7 +106,7 @@
      }
    }).then(data =&gt; {
      console.info(&#39;Successfully created the GitHub issue for the Freshdesk ticket&#39;);
-     saveMapping({ ticketID: args.data.ticket.id, issueID: data.id, issueNumber: data.number }).then(function () {
+     saveMapping({ ticketID: args.data.ticket.id, issueID: data.response.id, issueNumber: data.response.number }).then(function () {
        console.info(&#39;Successfully set the mapping in the db&#39;);
      }, error =&gt; {
        console.error(&#39;Error: Failed to set the mapping in the db&#39;);
