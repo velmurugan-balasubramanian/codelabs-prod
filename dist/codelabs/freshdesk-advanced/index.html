@@ -158,12 +158,14 @@
       </google-codelab-step>
     
       <google-codelab-step label="What is OAuth and why it is secure 🚩" duration="0">
-        <p>Open Authorization (OAuth) is an open standard for <em>delegated authorization</em> . OAuth is commonly used as a way for users to grant websites or applications access to  information on other websites, without giving away the passwords. </p>
-<p class="image-container"><img style="width: 624.00px" src="img/99eadd36845e72f7.png"></p>
-<p class="image-container"><img style="width: 624.00px" src="img/7fd94e7932dbdef4.png"></p>
-<p><em>&#34;You can think of this like hotel key cards, but for apps. If you have a hotel key card, you can get access to your room. How do you get a hotel key card? You have to do an authentication process at the front desk to get it. After authenticating and obtaining the key card, you can access resources across the hotel.&#34;  - Matt Raible</em></p>
-<p class="image-container"><img style="width: 450.00px" src="img/1af2cb65df24c9b4.png"></p>
-<p>For more information on OAuth, refer to our <a href="https://developers.freshdesk.com/v2/docs/oauth/#configure" target="_blank">documentation</a>.. </p>
+        <p class="image-container"><img style="width: 624.00px" src="img/7e63a462bac0443b.jpeg"></p>
+<p>Let&#39;s take a quick trip back in time to understand how OAuth was even born in the first place. In the early days of the internet, users were accustomed to providing their username and password to access resources. These resources could be email or social media profiles or even bank accounts, and so on. In case if somebody hacks or steals their credential, they will get direct and complete access to all the resources. There was no way to limit access or to revoke it in a proper way. Another issue is that if a third-party service wants to integrate, they would require password-based access. This opened a lot of anti-patterns and vulnerabilities. Also there were many technical challenges to this approach. if the user accidentally changes the password, the integration or anything dependent on that goes for a toss! </p>
+<p>As the internet grew rapidly it became absolutely necessary to control the access &amp; authorization in a proper way. We gradually started seeing advancements in mobile app, APIs and complex web applications. Although there was SAML it was primarily focused on authentication and is not authorization focused. So a group of smart people sat together and wrote a specification on how to implement access or authorization delegation. That is how OAuth came into existence</p>
+<p class="image-container"><img style="width: 624.00px" src="img/d48d6c861339f140.gif"></p>
+<p><strong>Open Authorization (OAuth)</strong> is an open standard for <em>delegated authorization</em> . OAuth is commonly used as a way for users to grant websites or applications access to  information on other websites, without giving away the passwords. One can understand the flow of OAuth from the diagram below. </p>
+<p>In this scenario, we are the <em>Resource Owners. </em>We own <em>Resources</em> (Github repos,issues). The browser is the <em>user-agent. </em>In order to access the resources, the <em>Client</em> (Freshworks app) initiates the flow (A) with client details and <em>scope</em> (permissions to resources). The Github <em>Authorization server </em>checks the client details and seeks approval from the Resource owner - flow (B). If the approval is granted, authorization code is passed back to Client (our app) - Flow (C). Our app securely exchanges the code for <em>Access token </em>and possibly <em>Refresh token</em> - <em>flow (D &amp; E)</em></p>
+<p>With this access token, our app can obtain secure resources on our behalf - Flow (F). In all of this flow, the resource owner never shares credentials with the client. Only a token is passed. This token is similar to how we get access cards in hotels.</p>
+<p>For more information on OAuth, refer to our <a href="https://developers.freshdesk.com/v2/docs/oauth/#configure" target="_blank">documentation</a>.</p>
 
 
       </google-codelab-step>
