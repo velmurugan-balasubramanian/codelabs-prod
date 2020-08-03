@@ -3,7 +3,7 @@
 def uploadAndInvalidate() {
   def s3Path = "/codelabs"
 
-  uploadAssetsToS3('dist', "s3://codelabs-prod/tutorials", 'us-east-1', true, false, 86400, 'prod')
+  uploadAssetsToS3('dist', "s3://codelabs-prod", 'us-east-1', true, false, 86400, 'prod')
 
 }
 
