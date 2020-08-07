@@ -25,7 +25,7 @@
   "exclude": [
     "^lang-.*"
   ],
-  "logoUrl": "/images/logo-fworks-black.svg",
+  "logoUrl": "./images/logo-fworks-black.svg",
   "toolbarBgColor": "#fff",
   "sort": "mainCategory",
   "pins": []
