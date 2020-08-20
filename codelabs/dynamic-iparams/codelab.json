@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-07-20T14:06:08Z",
+  "updated": "2020-08-20T04:57:01Z",
   "id": "dynamic-iparams",
   "duration": 0,
   "title": "Dynamic Installation Pages",
@@ -20,7 +20,7 @@
   "tags": [
     "freshdesk"
   ],
-  "feedback": "https://community.developers.freshworks.com",
+  "feedback": "https://community.developers.freshworks.com/c/ideas/15",
   "ga": "UA-159161314-2",
   "url": "dynamic-iparams"
 }

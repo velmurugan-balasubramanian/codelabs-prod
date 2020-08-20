@@ -25,23 +25,23 @@
                   id="dynamic-iparams"
                   title="Dynamic Installation Pages"
                   environment="web"
-                  feedback-link="https://community.developers.freshworks.com">
+                  feedback-link="https://community.developers.freshworks.com/c/ideas/15">
     
       <google-codelab-step label="What is it?" duration="0">
-        <p class="image-container"><img style="width: 624.00px" src="img/ccbb8d1b382c9dec.jpeg"></p>
-<p>Installation parameters, as the name suggests, allows us to obtain certain values during the time of App Installation. Conceptually, these values are configuration details that the app requires to function properly. This is similar to how cab-hailing apps (E.g. Uber, Ola) require user&#39;s contact details and location or how social media apps (E.g. Instagram, Twitter) require us to choose topics that we are interested in before we start using them. Installation parameters (iparams) can range from simple text inputs to complex UI components.</p>
+        <p>Installation parameters, as the name suggests, allows us to obtain certain values during the time of App Installation. Conceptually, these values are configuration details that the app requires to function properly. This is similar to how cab-hailing apps (E.g. Uber, Ola) require user&#39;s contact &amp; location details or how social media apps (E.g. Instagram, Twitter) require us to choose topics that we are interested in before we start using them. Installation parameters (iparams) can range from simple text inputs to complex UI components.</p>
 <p>Freshworks Developer Platform offers simplicity and sophistication when it comes to installation pages. </p>
 <ul>
 <li><code>iparams.json</code> offers a declarative syntax for defining iparam fields. It abstracts the UI and offers a simple JSONic interface for effortless development. <br></li>
 <li><code>iparams.html</code> allows complete customization of installation pages. However, the development and maintenance effort also increases.</li>
 </ul>
+<p class="image-container"><img style="width: 624.00px" src="img/ccbb8d1b382c9dec.jpeg"></p>
 <p>Dynamic Installation pages offer the best of both worlds. Retaining the simplicity of iparams.json and the customizability of iparams.html, Freshworks App developers can make use of iparam callbacks to build top-notch Installation pages without breaking a sweat.</p>
 <h3 is-upgraded><strong>What will we be learning:</strong></h3>
 <p>How to,</p>
 <ol type="1" start="1">
 <li>Write event callbacks for iparam fields</li>
 <li>Get / Set the properties of iparam fields</li>
-<li>Dynamically validating fields by making third-party API calls</li>
+<li>Dynamically validate fields by making third-party API calls</li>
 </ol>
 <h3 is-upgraded><strong>Before we dive-in: </strong></h3>
 <h3 is-upgraded>Ensure to, </h3>
@@ -49,7 +49,7 @@
 <li>Have <a href="https://developers.freshdesk.com/v2/docs/freshworks-cli/" target="_blank">Freshworks Developer Kit (FDK)</a> installed</li>
 <li>Clone the marketplace sample apps repo</li>
 </ol>
-<pre><code>git clone https://github.com/freshdesk/marketplace-sample-apps
+<pre><code>git clone https://github.com/freshworks/marketplace-sample-apps
 </code></pre>
 <ol type="1" start="3">
 <li>Switch to the app directory</li>
@@ -194,7 +194,7 @@ function validateWithAPI(value) {
        console.log(error);
    }
 );</code></pre>
-<p>Now that we have the client object, we can proceed to make use of the Request method. We have successfully made use of the <strong>Request method</strong> inside <code>`validateWithAPI`</code> to call a third party API based on the new value that was entered in the <code>twitter_id</code> field. Note that this is not an actual verification with Twitter. We are calling a dummy API that echoes back the status code that we have intended to return. In a real-world scenario, this could an actual third party API with its own endpoint and payload structure.</p>
+<p>Now that we have the client object, we can proceed to make use of the Request method. We have successfully made use of the <strong>Request method</strong> inside <code>`validateWithAPI`</code> to call a third party API based on the new value that was entered in the <code>twitter_id</code> field. Note that this is not an actual verification with Twitter. We are calling a dummy API that echoes back the status code that we have intended to return. In a real-world scenario, this could be an actual third party API with its own endpoint and payload structure.</p>
 <ul>
 <li><code>`https://httpbin.org/status/200`</code> will return 200 HTTP status indicating success. In this case, the promise resolves.</li>
 <li><code>`https://httpbin.org/status/500`</code> will return 500 HTTP status indicating an error. In this case, the promise would be rejected. </li>
@@ -312,10 +312,10 @@ function toggleFieldsVisibility(cm) {
         <p>We learned to <br></p>
 <ul>
 <li>Create and configure <code>iparams.json</code> with validation callbacks</li>
-<li>Defined the callback methods in <code>iparams.js</code></li>
-<li>Performed validations and returned the appropriate message using Promises</li>
-<li>Made use of Request method to validate using third-party REST API</li>
-<li>Manipulated iparam fields using utility methods</li>
+<li>Define the callback methods in <code>iparams.js</code></li>
+<li>Perform validations and return the appropriate message using Promises</li>
+<li>Make use of Request method to validate using third-party REST API</li>
+<li>Manipulate iparam fields using utility methods</li>
 </ul>
 <p>Kudos for following the tutorial until the end. If you have any queries, feel free to <a href="https://community.developers.freshworks.com/" target="_blank">get in touch with us.</a></p>
 <p class="image-container"><img style="width: 624.00px" src="img/317ad63bf3d4504c.png"></p>
@@ -330,6 +330,7 @@ function toggleFieldsVisibility(cm) {
   <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
   <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
   <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
 
 </body>
 </html>
