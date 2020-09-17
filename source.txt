@@ -16,5 +16,8 @@ claat export -o dist/codelabs 1k653X4ME0Y4jbwWEn7fu9mKe0gazhHR1vesNYUmPVvM
 Dynamic Installation Pages 
 claat export -o dist/codelabs 1gtvwtWw9EyHNUTUhU7rtGr9qkt6y1m1DljM30yy6RdU
 
+Freshcaller Routing Automation
+claat export -o dist/codelabs 14T8CoZFKJa3VGqvk56gsl2Cubl-17F8XP6SBi_M7Xho
+
 gulp path
 export PATH="./node_modules/.bin/:$PATH"
