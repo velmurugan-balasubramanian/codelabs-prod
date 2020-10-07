@@ -14,8 +14,15 @@ pipeline {
     stages {
         stage('upload to s3') {
             steps {
-               sh 'echo COMMAND RUNS HERE'
-               sh 'cat /etc/os-release'
+              sh 'echo COMMAND RUNS HERE'
+              sh 'cat /etc/os-release'
+              sh 'wget https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz '
+              sh 'tar -xvf go1.15.3.linux-amd64.tar.gz'
+              sh 'mv go /usr/local'
+              sh 'export GOROOT=/usr/local/go'
+              sh 'export GOPATH=$HOME/Projects/Proj1'
+              sh 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH'
+              sh 'go version'
                 //uploadAndInvalidate();
             }
         }
