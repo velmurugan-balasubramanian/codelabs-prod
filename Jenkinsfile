@@ -15,9 +15,10 @@ pipeline {
         stage('upload to s3') {
             steps {
               sh 'echo COMMAND RUNS HERE'
-              sh 'cat /etc/os-release'
-              sh 'wget https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz '
-              sh 'tar -xvf go1.15.3.linux-amd64.tar.gz'
+              sh 'apt-get install python-software-properties'
+              sh 'add-apt-repository ppa:duh/golang'
+              sh 'apt-get update'
+              sh 'apt-get install golang'
               sh 'mv go /usr/local'
               sh 'export GOROOT=/usr/local/go'
               sh 'export GOPATH=$HOME/Projects/Proj1'
