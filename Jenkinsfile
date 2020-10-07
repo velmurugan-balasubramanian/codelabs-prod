@@ -14,7 +14,9 @@ pipeline {
     stages {
         stage('upload to s3') {
             steps {
-                uploadAndInvalidate();
+               sh 'echo COMMAND RUNS HERE'
+               sh 'cat /etc/os-release'
+                //uploadAndInvalidate();
             }
         }
     }
