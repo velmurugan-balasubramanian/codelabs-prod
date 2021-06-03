@@ -21,3 +21,5 @@ claat export -o dist/codelabs 14T8CoZFKJa3VGqvk56gsl2Cubl-17F8XP6SBi_M7Xho
 
 gulp path
 export PATH="./node_modules/.bin/:$PATH"
+
+change
